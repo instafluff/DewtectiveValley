@@ -1,0 +1,12 @@
+{
+  "Name": "DewtectiveValley",
+  "Author": "Instafluff",
+  "Version": "1.6.0",
+  "Description": "The Stardew Valley Mystery Detective Mod!",
+  "UniqueID": "instafluff.dewtective",
+  "EntryDll": "DewtectiveValley.dll",
+  "MinimumApiVersion": "2.10.0",
+  "UpdateKeys": [
+    "GitHub:instafluff/DewtectiveValley"
+  ]
+}
