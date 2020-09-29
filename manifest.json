@@ -8,5 +8,8 @@
   "MinimumApiVersion": "2.10.0",
   "UpdateKeys": [
     "GitHub:instafluff/DewtectiveValley"
+  ],
+  "Dependencies": [
+    { "UniqueID": "Pathoschild.ContentPatcher", "IsRequired": true }
   ]
 }

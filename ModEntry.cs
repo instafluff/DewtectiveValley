@@ -27,6 +27,15 @@ namespace DewtectiveValley
 		private void GameLoop_GameLaunched( object sender, GameLaunchedEventArgs e )
 		{
 			Console.WriteLine( "Game Has Launched" );
+			var api = this.Helper.ModRegistry.GetApi<IContentPatcherAPI>( "Pathoschild.ContentPatcher" );
+			api.RegisterToken( this.ModManifest, "PlayerName", () =>
+			{
+				if( Context.IsWorldReady )
+					return new[] { Game1.player.Name };
+				if( SaveGame.loaded?.player != null )
+					return new[] { SaveGame.loaded.player.Name }; // lets token be used before save is fully loaded
+				return null;
+			} );
 		}
 
 		private void Input_ButtonPressed( object sender, ButtonPressedEventArgs e )

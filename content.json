@@ -1,0 +1,13 @@
+{
+   "Format": "1.18.0",
+   "Changes": [
+      {
+         "Action": "EditData",
+         "Target": "Characters/Dialogue/Abigail",
+         "Entries": {
+            "Mon": "Oh hey {{dewtectivevalley/PlayerName}}! Taking a break from work?"
+         },
+		 "LogName": "Dewtective"
+      }
+   ]
+}
