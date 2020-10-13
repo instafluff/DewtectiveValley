@@ -1,0 +1,18 @@
+{
+  "Name": "DewtectiveTest",
+  "Author": "Instafluff",
+  "Version": "1.0.0",
+  "Description": "The Stardew Valley Mystery Detective Mod!",
+  "UniqueID": "instafluff.dewtectivetest",
+  "ContentPackFor": {
+      "UniqueID": "Pathoschild.ContentPatcher"
+   },
+  "MinimumApiVersion": "2.10.0",
+  "UpdateKeys": [
+    "GitHub:instafluff/DewtectiveValley"
+  ],
+  "Dependencies": [
+    { "UniqueID": "instafluff.dewtective", "IsRequired": true },
+    { "UniqueID": "Pathoschild.ContentPatcher", "IsRequired": true }
+  ]
+}

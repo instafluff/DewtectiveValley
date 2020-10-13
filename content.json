@@ -3,9 +3,9 @@
    "Changes": [
       {
          "Action": "EditData",
-         "Target": "Characters/Dialogue/Abigail",
+         "Target": "Characters/Dialogue/Gus",
          "Entries": {
-            "Mon": "Oh hey {{dewtectivevalley/PlayerName}}! Taking a break from work?"
+            "mon": "Oh hey yooooo! Taking a break from work??????"
          },
 		 "LogName": "Dewtective"
       }
