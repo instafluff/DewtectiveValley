@@ -46,6 +46,8 @@ namespace DewtectiveValley
 
 		private void GameLoop_GameLaunched( object sender, GameLaunchedEventArgs e )
 		{
+			// TODO: Try setting a schedule and see if it can trigger a location-specific dialogue!
+
 			Console.WriteLine( "Game Has Launched" );
 
 			var api = this.Helper.ModRegistry.GetApi<IContentPatcherAPI>( "Pathoschild.ContentPatcher" );
@@ -64,9 +66,17 @@ namespace DewtectiveValley
 				api.RegisterToken( this.ModManifest, character + "Intro", () => {
 					var ch = character;
 					if( Context.IsWorldReady )
-						return new[] { dialogue[ ch ] };
+						return new[] { dialogue[ ch ] + " Intro" };
 					if( SaveGame.loaded?.player != null )
-						return new[] { dialogue[ ch ] }; // lets token be used before save is fully loaded
+						return new[] { dialogue[ ch ] + " Intro" }; // lets token be used before save is fully loaded
+					return null;
+				} );
+				api.RegisterToken( this.ModManifest, character + "Rain", () => {
+					var ch = character;
+					if( Context.IsWorldReady )
+						return new[] { dialogue[ ch ] + " Rain" };
+					if( SaveGame.loaded?.player != null )
+						return new[] { dialogue[ ch ] + " Rain" }; // lets token be used before save is fully loaded
 					return null;
 				} );
 				for( var i = 0; i < 6; i++ )
