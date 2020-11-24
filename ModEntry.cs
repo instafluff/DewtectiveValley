@@ -12,6 +12,34 @@ using StardewValley;
 using StardewValley.Menus;
 using StardewValley.Tools;
 
+// Detective Mod Idears
+// - Stardewmong Us: Mark a character each day and then find out if they were right
+// - Spelling Dew: Each character gives you a letter that spells where the missing person is hiding
+// - Carmden Stardewego: Each character gives you a hint to another character that eventually leads to the missing person
+// - Stardew Raider: Each character gives you a little hint to the location of a relic
+// - Spelling Dew Valley: Each character gives you a letter that spells which person is the right one. And target person gives you a bad letter
+
+// THE DETECTIVE PLAN
+// - the suspect list
+// - lots of hiding locations
+// - times/schedules for characters
+// - different dialogue clues
+// - gift someone to mark found!
+
+// Characters: Abigail, Alex, Caroline, Clint, Demetrius, Elliott, Emily, Evelyn, George, Gus, Haley, Harvey, Jas, Jodi, Leah, Lewis, Linus, Marnie, Maru, Pam, Penny, Pierre, Robin, Sam, Sebastian, Shane, Vincent, Willy
+
+/* Example:
+ * Abigail - I think they talked to Gus about something?
+ * Gus - They seemed to be interested in going to a
+ * 
+*/
+
+
+
+// FUTURE:
+// - items/clues for list
+
+
 namespace DewtectiveValley
 {
     public class ModEntry : Mod
@@ -40,7 +68,8 @@ namespace DewtectiveValley
 			//);
 		}
 
-		string[] characters = new string[] { "Abigail", "Shane", "Willy", "Gus" };
+		Random random = new Random();
+		string[] characters = new string[] { "Abigail", "Alex", "Caroline", "Clint", "Demetrius", "Elliott", "Emily", "Evelyn", "George", "Gus", "Haley", "Harvey", "Jas", "Jodi", "Leah", "Lewis", "Linus", "Marnie", "Maru", "Pam", "Penny", "Pierre", "Robin", "Sam", "Sebastian", "Shane", "Vincent", "Willy" };
 		string[] numbers = new string[] { "Zero", "One", "Two", "Three", "Four", "Five" };
 		Dictionary<string, string> dialogue = new Dictionary<string, string>();
 
@@ -60,9 +89,21 @@ namespace DewtectiveValley
 				return null;
 			} );
 
+			var SUSPECT = characters[ random.Next( characters.Length ) ].ToUpper();
+			var letters = SUSPECT.ToCharArray().OrderBy( x => random.Next() ).ToArray();
+			var index = 0;
+
 			foreach( var character in characters )
 			{
-				dialogue.Add( character, string.Format( "TESTING {0} DIALOGUE", character ) );
+				//dialogue.Add( character, string.Format( "TESTING {0} DIALOGUE", character ) );
+				if( character.ToUpper() == SUSPECT )
+				{
+					dialogue.Add( character, "Aww you found me!" );
+				}
+				else
+				{
+					dialogue.Add( character, string.Format( "{0}", letters[ index ] ) );
+				}
 				api.RegisterToken( this.ModManifest, character + "Intro", () => {
 					var ch = character;
 					if( Context.IsWorldReady )
@@ -90,6 +131,7 @@ namespace DewtectiveValley
 						return null;
 					} );
 				}
+				index = ( index + 1 ) % letters.Length;
 			}
 
 			foreach( IContentPack contentPack in this.Helper.ContentPacks.GetOwned() )
