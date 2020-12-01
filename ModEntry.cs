@@ -15,7 +15,7 @@ using StardewValley.Tools;
 // Detective Mod Idears
 // - Stardewmong Us: Mark a character each day and then find out if they were right
 // - Spelling Dew: Each character gives you a letter that spells where the missing person is hiding
-// - Carmden Stardewego: Each character gives you a hint to another character that eventually leads to the missing person
+// - Carmen Stardewego: Each character gives you a hint to another character that eventually leads to the missing person
 // - Stardew Raider: Each character gives you a little hint to the location of a relic
 // - Spelling Dew Valley: Each character gives you a letter that spells which person is the right one. And target person gives you a bad letter
 
@@ -107,17 +107,17 @@ namespace DewtectiveValley
 				api.RegisterToken( this.ModManifest, character + "Intro", () => {
 					var ch = character;
 					if( Context.IsWorldReady )
-						return new[] { dialogue[ ch ] + " Intro" };
+						return new[] { dialogue[ ch ] };
 					if( SaveGame.loaded?.player != null )
-						return new[] { dialogue[ ch ] + " Intro" }; // lets token be used before save is fully loaded
+						return new[] { dialogue[ ch ] }; // lets token be used before save is fully loaded
 					return null;
 				} );
 				api.RegisterToken( this.ModManifest, character + "Rain", () => {
 					var ch = character;
 					if( Context.IsWorldReady )
-						return new[] { dialogue[ ch ] + " Rain" };
+						return new[] { dialogue[ ch ] };
 					if( SaveGame.loaded?.player != null )
-						return new[] { dialogue[ ch ] + " Rain" }; // lets token be used before save is fully loaded
+						return new[] { dialogue[ ch ] }; // lets token be used before save is fully loaded
 					return null;
 				} );
 				for( var i = 0; i < 6; i++ )
